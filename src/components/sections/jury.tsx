@@ -21,23 +21,23 @@ interface JurySectionProps {
 const defaultJuryMembers: JuryMember[] = [
   {
     id: 1,
-    name: "Dr. Sarah Jenkins",
+    name: "Dr. Priya Sharma",
     role: "Venture Capitalist & Author",
-    bio: "Dr. Sarah Jenkins is a leading venture capitalist and advocate for inclusive leadership, focusing on tech scaling, impact investing, and corporate governance.",
+    bio: "Dr. Priya Sharma is a leading venture capitalist and advocate for inclusive leadership, focusing on tech scaling, impact investing, and corporate governance.",
     image: "/assets/profile_female_1.png",
   },
   {
     id: 2,
-    name: "David Vance",
+    name: "Vikram Malhotra",
     role: "Chief Growth Officer",
-    bio: "David Vance is a corporate growth strategist and former Fortune 500 executive, with over 20 years of experience leading global digital transformation.",
-    image: "/assets/profile_female_1.png", // Reusing profile_female_1 flipped for David Vance
+    bio: "Vikram Malhotra is a corporate growth strategist and former Fortune 500 executive, with over 20 years of experience leading global digital transformation.",
+    image: "/assets/profile_female_1.png", // Reusing profile_female_1 flipped for Vikram Malhotra
   },
   {
     id: 3,
-    name: "Dr. Marcus Thorne",
+    name: "Dr. Amit Patel",
     role: "Business Strategy Advisor",
-    bio: "Dr. Marcus Thorne is a distinguished professor of economics and strategic advisor to global enterprises, author of 'The Agile Future'.",
+    bio: "Dr. Amit Patel is a distinguished professor of economics and strategic advisor to global enterprises, author of 'The Agile Future'.",
     image: "/assets/profile_female_2.png", // Using the senior author portrait
   },
 ];

@@ -22,21 +22,21 @@ interface WinnersSectionProps {
 const defaultWinners: Winner[] = [
   {
     id: 1,
-    name: "SARAH JENKINS",
+    name: "PRIYA SHARMA",
     role: "Entrepreneur of the Year",
     company: "EcoVibe Technologies",
     image: "/assets/profile_female_1.png",
   },
   {
     id: 2,
-    name: "DR. ARIS VASEL",
+    name: "DR. ANIL DESHMUKH",
     role: "Technology Innovator",
     company: "Quantum Computing Labs",
     image: "/assets/profile_female_1.png", // Reusing profile_female_1 for high quality visual alignment
   },
   {
     id: 3,
-    name: "ELENA ROSTOVA",
+    name: "KAVITA PATEL",
     role: "Lifetime Achievement in Leadership",
     company: "AeroSpace Global",
     image: "/assets/profile_female_2.png", // Using the senior author portrait

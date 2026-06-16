@@ -23,16 +23,16 @@ const defaultTestimonials: Testimonial[] = [
   {
     id: 1,
     name: "ANANYA ROY",
-    role: "CEO, TechVantage - Season 6 Winner",
+    role: "CEO, TechVantage - 2025 Winner",
     quote: "Winning the Global Award was a major turning point for TechVantage. The recognition not only validated our team's years of hard work but also boosted investor confidence and helped us establish credibility in international markets. The event itself was exceptionally organized and full of inspiring leaders.",
     image: "/assets/profile_female_1.png",
   },
   {
     id: 2,
-    name: "KAREN CHEN",
-    role: "Founder, GreenSphere - Season 6 Winner",
+    name: "NEHA SHARMA",
+    role: "Founder, GreenSphere - 2025 Winner",
     quote: "Being recognized for our sustainability initiatives was an incredible honor. The networking opportunities with other visionary business leaders have been invaluable. A truly top-tier program that genuinely empowers innovators. A masterpiece of an awards platform.",
-    image: "/assets/profile_female_1.png", // Reusing profile_female_1 flipped for Karen Chen
+    image: "/assets/profile_female_1.png", // Reusing profile_female_1 flipped for Neha Sharma
   },
 ];
 

@@ -9,10 +9,10 @@ import styles from "./nominees.module.css";
 import { Button } from "../ui/button";
 
 const mockNominees = [
-  { id: 1, name: "Sarah Jenkins", role: "CEO, TechVision", category: "Technology Leadership", imageColor: "#374151" },
-  { id: 2, name: "David Chen", role: "Founder, EcoSolutions", category: "Sustainability Award", imageColor: "#1f2937" },
-  { id: 3, name: "Elena Rodriguez", role: "CMO, GlobalBrand", category: "Women Leadership", imageColor: "#4b5563" },
-  { id: 4, name: "Michael Chang", role: "CEO, InnovateX", category: "Startup of the Year", imageColor: "#111827" },
+  { id: 1, name: "Aarav Mehta", role: "CEO, TechVision", category: "Technology Leadership", imageColor: "#374151" },
+  { id: 2, name: "Vikram Malhotra", role: "Founder, EcoSolutions", category: "Sustainability Award", imageColor: "#1f2937" },
+  { id: 3, name: "Ananya Sen", role: "CMO, GlobalBrand", category: "Women Leadership", imageColor: "#4b5563" },
+  { id: 4, name: "Rohan Joshi", role: "CEO, InnovateX", category: "Startup of the Year", imageColor: "#111827" },
 ];
 
 export const NomineesSection: React.FC = () => {
