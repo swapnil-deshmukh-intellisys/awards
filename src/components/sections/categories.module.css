@@ -1,0 +1,232 @@
+.categories {
+  padding: 3rem 0;
+  background-color: var(--color-warm-beige);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.categoryCard {
+  position: relative;
+  aspect-ratio: 3/4;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.1) 100%);
+  z-index: 1;
+}
+
+.cardContent {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+}
+
+.cardTitle {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 0.25rem;
+}
+
+.cardLabel {
+  font-size: var(--font-size-xs);
+  opacity: 0.8;
+  line-height: var(--line-height-tight);
+}
+
+/* Glimpses of WAA Layout */
+.glimpses {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  background-color: #ffffff;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+@media (min-width: 992px) {
+  .glimpses {
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+  }
+}
+
+.glimpsesText {
+  max-width: 380px;
+}
+
+.glimpsesTitle {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-2xl);
+  color: var(--color-text-dark);
+  margin-bottom: 1rem;
+}
+
+.glimpsesDesc {
+  color: var(--color-muted-slate);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+}
+
+.glimpsesVideos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 576px) {
+  .glimpsesVideos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.videoCard {
+  position: relative;
+  aspect-ratio: 16/10;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.videoCardBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease;
+}
+
+.videoCardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 100%);
+  z-index: 1;
+}
+
+.videoCard:hover .videoCardBg {
+  transform: scale(1.05);
+}
+
+.videoCardInfo {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 2;
+  color: #ffffff;
+}
+
+.videoTag {
+  background-color: var(--color-gold-accent);
+  font-size: var(--font-size-xs);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+.videoCardTitle {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  margin-top: 0.5rem;
+}
+
+.videoPlayBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #ff0000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.videoCard:hover .videoPlayBtn {
+  background-color: #d60000;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Modal Styling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+
+.modalContent {
+  width: 90%;
+  max-width: 800px;
+  position: relative;
+}
+
+.closeBtn {
+  position: absolute;
+  top: -2.5rem;
+  right: 0;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.iframeWrapper {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,103 @@
+.nominees {
+  padding: 3rem 0;
+  background-color: var(--color-deep-charcoal);
+}
+
+.headerRow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .headerRow {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+
+.viewAllBtn {
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .viewAllBtn {
+    margin-top: 0;
+    margin-bottom: 3rem; /* aligns with the section header bottom margin */
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.nomineeCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background-color: var(--color-rich-black);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.5s ease;
+}
+
+.nomineeCard:hover .imagePlaceholder {
+  transform: scale(1.05);
+}
+
+/* We need to hide overflow on the card to make the scale effect clean */
+.nomineeCard {
+  overflow: hidden;
+}
+
+.cardContent {
+  padding: 1.5rem;
+  background-color: var(--color-deep-charcoal);
+  position: relative;
+  z-index: 2;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryBadge {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--color-champagne-gold);
+  margin-bottom: 0.75rem;
+  font-weight: var(--font-weight-semibold);
+}
+
+.nomineeName {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-xl);
+  color: var(--color-soft-ivory);
+  margin-bottom: 0.25rem;
+}
+
+.nomineeRole {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted-slate);
+}

@@ -1,0 +1,190 @@
+.winners {
+  padding: 3rem 0;
+  background-color: var(--color-warm-light);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-family: var(--font-family-display);
+  font-size: var(--text-h2);
+  color: var(--color-text-dark);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: 1rem;
+}
+
+.divider {
+  width: 80px;
+  height: 3px;
+  background-color: var(--color-gold-accent);
+  margin: 0 auto;
+}
+.grid {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  scroll-behavior: smooth;
+  gap: 2rem !important;
+  padding: 0.5rem 0 1rem 0;
+  scrollbar-width: none; /* Hide scrollbar Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+  width: 100%;
+  scroll-snap-type: x mandatory;
+}
+
+.grid::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari */
+}
+
+.grid > div {
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  min-width: 100% !important;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+  .grid > div {
+    width: calc(50% - 1rem) !important;
+    min-width: calc(50% - 1rem) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid > div {
+    width: calc(25% - 1.5rem) !important;
+    min-width: calc(25% - 1.5rem) !important;
+  }
+}
+
+.winnerCard {
+  background-color: #ffffff;
+  border: 1px solid rgba(197, 160, 89, 0.25);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+
+.winnerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.flippedImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+  transition: transform 0.5s ease;
+}
+
+.winnerCard:hover .winnerImage {
+  transform: scale(1.05);
+}
+
+.winnerCard:hover .flippedImage {
+  transform: scale(1.05) scaleX(-1);
+}
+
+.winnerBadge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, var(--color-champagne-gold), #9b722b);
+  color: #ffffff;
+  padding: 0.35rem 0.85rem;
+  border-radius: 4px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  letter-spacing: var(--letter-spacing-wide);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.cardContent {
+  padding: 1.5rem;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.winnerName {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-xl);
+  color: var(--color-text-dark);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 0.5rem;
+}
+
+.winnerRole {
+  font-size: var(--font-size-sm);
+  color: var(--color-gold-accent);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: 0.75rem;
+}
+
+.winnerBook {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted-slate);
+}
+
+.winnerBookSpecial {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted-slate);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.controlBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  color: var(--color-text-dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.controlBtn:hover {
+  background-color: var(--color-champagne-gold);
+  color: #ffffff;
+  border-color: var(--color-champagne-gold);
+  transform: scale(1.05);
+}
+
+.controlBtn:active {
+  transform: scale(0.95);
+}

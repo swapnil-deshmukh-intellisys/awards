@@ -1,0 +1,33 @@
+.card {
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.default {
+  background-color: var(--color-deep-charcoal);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.default:hover {
+  border-color: rgba(212, 175, 55, 0.3); /* subtle gold reveal */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.glass {
+  background-color: var(--color-glass-dark);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass:hover {
+  background-color: rgba(17, 24, 39, 0.85);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.bordered {
+  background-color: transparent;
+  border: 1px solid var(--color-champagne-gold);
+}

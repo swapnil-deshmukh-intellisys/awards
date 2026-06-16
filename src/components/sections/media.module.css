@@ -1,0 +1,232 @@
+.media {
+  padding: 3rem 0;
+  background-color: var(--color-warm-light);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-family: var(--font-family-display);
+  font-size: var(--text-h2);
+  color: var(--color-text-dark);
+  margin-bottom: 1rem;
+}
+
+.divider {
+  width: 80px;
+  height: 3px;
+  background-color: var(--color-brand-blue);
+  margin: 0 auto;
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .galleryGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.galleryCard {
+  position: relative;
+  aspect-ratio: 16/10;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.flippedImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+  transition: transform 0.4s ease;
+}
+
+.galleryCard:hover .galleryImage {
+  transform: scale(1.05);
+}
+
+.galleryCard:hover .flippedImage {
+  transform: scale(1.05) scaleX(-1);
+}
+
+.carouselDots {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #d1d1d1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.active {
+  background-color: var(--color-brand-blue);
+  width: 20px;
+  border-radius: 4px;
+}
+
+/* Video Row */
+.videoRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 850px;
+  margin: 0 auto 1.5rem auto;
+}
+
+@media (min-width: 768px) {
+  .videoRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.videoCard {
+  position: relative;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border: 3px solid #ffffff; /* Gold/yellow borders from reference */
+  transition: border-color 0.3s ease;
+}
+
+.videoCard:hover {
+  border-color: var(--color-gold-accent);
+}
+
+.videoCardBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease;
+}
+
+.videoCardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.1) 100%);
+  z-index: 1;
+}
+
+.videoCard:hover .videoCardBg {
+  transform: scale(1.05);
+}
+
+.videoCardInfo {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  z-index: 2;
+  color: #ffffff;
+}
+
+.videoCardTitle {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.videoPlayBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ff0000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
+}
+
+.videoCard:hover .videoPlayBtn {
+  background-color: #d60000;
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.5);
+}
+
+.actionRow {
+  display: flex;
+  justify-content: center;
+}
+
+.viewAllBtn {
+  border-radius: 4px;
+}
+
+/* Modal Styling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+
+.modalContent {
+  width: 90%;
+  max-width: 800px;
+  position: relative;
+}
+
+.closeBtn {
+  position: absolute;
+  top: -2.5rem;
+  right: 0;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.iframeWrapper {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
