@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Play, X } from "lucide-react";
-import { Button } from "../ui/button";
+import Image from "next/image";
 import styles from "./award-night.module.css";
 
 export const AwardNightSection: React.FC = () => {
@@ -10,36 +10,54 @@ export const AwardNightSection: React.FC = () => {
 
   return (
     <section id="award-night" className={styles.awardNight}>
-      <div className="container">
-        <div className={styles.header}>
-          <h2 className={styles.title}>Global Awards - Award Night</h2>
-          <div className={styles.divider} />
-        </div>
-
-        {/* Video Player Card Preview */}
-        <div className={styles.videoContainer}>
-          <div className={styles.videoPreview} style={{ backgroundImage: `url('/assets/hero_banner.jpeg')` }}>
-            <div className={styles.videoOverlay} />
-            <div className={styles.innerContent}>
-              <span className={styles.liveBadge}>LIVE</span>
-              <h3 className={styles.videoTitle}>AWARD CEREMONY</h3>
-
-              <button
-                className={styles.playButton}
-                onClick={() => setIsVideoOpen(true)}
-                aria-label="Play Award Video"
-              >
-                <Play fill="#ffffff" stroke="#ffffff" size={32} className={styles.playIcon} />
-              </button>
-
-              <div className={styles.shareRow}>
-                <span className={styles.shareBtn}>Share</span>
-                <span className={styles.watchBtn}>Watch Later</span>
+      <div className={`container ${styles.grid}`}>
+        
+        {/* Left Column - Video Preview */}
+        <div className={styles.videoColumn}>
+          <div className={styles.yellowSquare}></div>
+          <div className={styles.videoCard}>
+            <div className={styles.imageWrapper}>
+              <Image
+                src="/assets/business_award_trophy.png"
+                alt="Award Ceremony Trophy"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className={styles.trophyImage}
+                priority
+              />
+              <div className={styles.playOverlay}>
+                <button
+                  className={styles.playButton}
+                  onClick={() => setIsVideoOpen(true)}
+                  aria-label="Play Award Video"
+                >
+                  <Play fill="#1A1A1A" stroke="#1A1A1A" size={28} className={styles.playIcon} />
+                </button>
               </div>
             </div>
           </div>
         </div>
 
+        {/* Right Column - Text & Stats */}
+        <div className={styles.textContent}>
+          <h3 className={styles.kicker}>The Night of Glitz</h3>
+          <h2 className={styles.title}>Witness the Ceremony</h2>
+          <p className={styles.paragraph}>
+            The Global Awards ceremony is more than an event; it's a showcase of human potential.
+            Experience highlights where industry titans meet tomorrow's disruptors.
+          </p>
+          <div className={styles.statsDivider}></div>
+          <div className={styles.statsGrid}>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>2,500+</span>
+              <span className={styles.statLabel}>Attendees</span>
+            </div>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>45+</span>
+              <span className={styles.statLabel}>Regions</span>
+            </div>
+          </div>
+        </div>
 
       </div>
 

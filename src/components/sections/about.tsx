@@ -3,7 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { SectionHeader } from "../ui/section-header";
 import styles from "./about.module.css";
 
 interface AboutContent {
@@ -19,48 +18,48 @@ interface AboutSectionProps {
 
 export const AboutSection: React.FC<AboutSectionProps> = ({ initialAbout }) => {
   const displayTitle = initialAbout?.title || "About the Awards";
-  const displaySubtitle = initialAbout?.subtitle || "Celebrating corporate excellence, pioneering innovations, and outstanding leadership achievements worldwide.";
+  const displayKicker = initialAbout?.subtitle || '"Every word you write is a step towards your legacy."';
   const displayParagraphs = initialAbout?.paragraphs || [
-    "The Global Awards is a prestigious platform dedicated to recognizing, honoring, and amplifying the achievements of businesses and corporate leaders. In a rapidly evolving economic landscape, we aim to shine a bright spotlight on organizations and individuals who have made exceptional contributions across technology, sustainability, leadership, and startup ecosystems.",
-    "Our awards seek to highlight both established industry giants and emerging startups, providing them with global recognition, credibility, and networking support. We believe that celebrating these successes inspires the next generation of business leaders and drives meaningful progress.",
-    "Through a rigorous and transparent evaluation process judged by a distinguished panel of industry experts, corporate leaders, and seasoned analysts, we ensure that the most inspiring and high-impact accomplishments are celebrated on our global stage."
+    "Celebrating corporate excellence, pioneering innovations, and outstanding leadership achievements worldwide. The Global Awards is a prestigious platform dedicated to recognizing achievements of businesses.",
+    "Through a rigorous evaluation process judged by a distinguished panel of industry experts, we ensure the most high-impact accomplishments are celebrated."
   ];
-  const displayImage = initialAbout?.image || "/assets/business_award_trophy.png";
+  const displayImage = initialAbout?.image || "/assets/typewriter_legacy.png";
 
   return (
     <section id="about" className={styles.about}>
       <div className={`container ${styles.grid}`}>
         
         {/* Left Column - Text Content */}
-        <div className={styles.textContent}>
-          <SectionHeader 
-            title={displayTitle} 
-            subtitle={displaySubtitle}
-          />
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+        <motion.div 
+          className={styles.textContent}
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className={styles.title}>{displayTitle}</h2>
+          <div className={styles.divider}></div>
+          <div className={styles.contentBody}>
+            <p className={styles.kicker}>{displayKicker}</p>
             {displayParagraphs.map((para, index) => (
               <p key={index} className={styles.paragraph}>
                 {para}
               </p>
             ))}
-          </motion.div>
-        </div>
+          </div>
+          <button className={styles.button}>Read Full Mission</button>
+        </motion.div>
 
         {/* Right Column - Visual/Image Layout */}
-        <div className={styles.visualContent}>
-          <motion.div 
-            className={styles.imageContainer}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-          >
+        <motion.div 
+          className={styles.visualContent}
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+        >
+          <div className={styles.yellowOffset}></div>
+          <div className={styles.imageCard}>
             <div className={styles.imageWrapper}>
               <Image 
                 src={displayImage} 
@@ -68,11 +67,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ initialAbout }) => {
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className={styles.typewriterImage}
+                priority
               />
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 };
+

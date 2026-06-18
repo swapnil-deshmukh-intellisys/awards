@@ -54,7 +54,7 @@
 
   /* Font Families */
   --font-family-display: var(--font-playfair), serif;
-  --font-family-sans: var(--font-inter), sans-serif;
+  --font-family-sans: var(--font-space-grotesk), sans-serif;
 
   /* Semantic Typography Hierarchy */
   --text-h1: var(--font-size-6xl);
