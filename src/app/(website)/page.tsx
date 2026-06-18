@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/sections/hero";
 import { WinnersSection } from "@/components/sections/winners";
 import { AwardNightSection } from "@/components/sections/award-night";
 import { AboutSection } from "@/components/sections/about";
+import { CountdownSection } from "@/components/sections/countdown";
 import { CategoriesSection } from "@/components/sections/categories";
 import { JurySection } from "@/components/sections/jury";
 import { DirectorSection } from "@/components/sections/director";
@@ -100,8 +101,9 @@ export default async function Home() {
     <main className={styles.main}>
       <HeroSection />
       <WinnersSection initialWinners={winners.length > 0 ? winners : undefined} />
-      <AwardNightSection />
       <AboutSection initialAbout={aboutContent || undefined} />
+      <CountdownSection />
+      <AwardNightSection />
       <CategoriesSection initialCategories={categories.length > 0 ? categories : undefined} />
       <JurySection initialJury={juryMembers.length > 0 ? juryMembers : undefined} />
       <DirectorSection initialDirector={directorMessage || undefined} />

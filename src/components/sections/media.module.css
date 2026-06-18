@@ -1,5 +1,5 @@
 .media {
-  padding: 3rem 0;
+  padding: 6rem 0;
   background-color: var(--color-warm-light);
 }
 
@@ -11,7 +11,7 @@
 .title {
   font-family: var(--font-family-display);
   font-size: var(--text-h2);
-  color: var(--color-text-dark);
+  color: var(--foreground);
   margin-bottom: 1rem;
 }
 
@@ -80,7 +80,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #d1d1d1;
+  background-color: rgba(255, 255, 255, 0.2);
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -112,8 +112,8 @@
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  border: 3px solid #ffffff; /* Gold/yellow borders from reference */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  border: 3px solid var(--color-surface);
   transition: border-color 0.3s ease;
 }
 

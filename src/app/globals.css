@@ -1,20 +1,21 @@
 :root {
   /* Color System */
-  --color-rich-black: #000000;
-  --color-deep-charcoal: #111827;
-  --color-soft-ivory: #FDFCF9;
-  --color-muted-slate: #64748B;
+  --color-rich-black: #0C0706;
+  --color-deep-charcoal: #180D0C;
+  --color-soft-ivory: #FDFBF7;
+  --color-muted-slate: #A0827C;
   --color-champagne-gold: #D4AF37;
   --color-deep-gold: #B38F23;
-  --color-glass-dark: rgba(17, 24, 39, 0.7);
+  --color-glass-dark: rgba(24, 14, 12, 0.75);
 
   /* Brand Colors from Reference Website */
-  --color-brand-blue: #0b5394;
-  --color-brand-blue-hover: #083c6b;
-  --color-warm-beige: #f6f3eb;
-  --color-warm-light: #faf8f5;
-  --color-gold-accent: #c5a059;
-  --color-text-dark: #222222;
+  --color-brand-blue: #D4AF37;
+  --color-brand-blue-hover: #C5A059;
+  --color-warm-beige: #2D1815;
+  --color-warm-light: #38201C;
+  --color-gold-accent: #D4AF37;
+  --color-text-dark: #FDFBF7;
+  --color-surface: #251614;
 
   /* Typography Scale - Size */
   --font-size-xs: 0.75rem;     /* 12px */
@@ -54,7 +55,7 @@
 
   /* Font Families */
   --font-family-display: var(--font-playfair), serif;
-  --font-family-sans: var(--font-space-grotesk), sans-serif;
+  --font-family-sans: var(--font-space-grotesk), var(--font-inter), sans-serif;
 
   /* Semantic Typography Hierarchy */
   --text-h1: var(--font-size-6xl);
@@ -69,8 +70,8 @@
   --text-body-sm: var(--font-size-sm);
   --text-caption: var(--font-size-xs);
 
-  --background: var(--color-soft-ivory);
-  --foreground: var(--color-text-dark);
+  --background: #1A0F0D;
+  --foreground: var(--color-soft-ivory);
 }
 
 * {
@@ -89,8 +90,9 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-display);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
+  color: var(--foreground);
 }
 
 h1 { font-size: var(--text-h1); letter-spacing: var(--letter-spacing-tight); }
@@ -100,7 +102,7 @@ h4 { font-size: var(--text-h4); }
 h5 { font-size: var(--text-h5); }
 h6 { font-size: var(--text-h6); }
 
-p { font-size: var(--text-body); color: var(--color-muted-slate); }
+p { font-size: var(--text-body); color: var(--color-muted-slate); line-height: var(--line-height-relaxed); }
 
 a {
   color: inherit;

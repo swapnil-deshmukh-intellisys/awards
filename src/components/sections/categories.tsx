@@ -26,6 +26,20 @@ const defaultCategories: Category[] = [
   { id: 6, title: "Global Impact", bgGradient: "linear-gradient(135deg, #2d3748 0%, #4a5568 100%)", label: "Cross-Border Business & Expansion" },
 ];
 
+const categoryImageMap: { [key: string]: string } = {
+  "innovation": "/assets/images/Innovation.png",
+  "leadership": "/assets/images/Leadership.png",
+  "sustainability": "/assets/images/Sustainability.png",
+  "startups": "/assets/images/Startups.png",
+  "enterprise": "/assets/images/enterprise.png",
+  "global impact": "/assets/images/Global_Impact.png",
+};
+
+const getCategoryImage = (title: string) => {
+  const normalizedTitle = title.toLowerCase().trim();
+  return categoryImageMap[normalizedTitle] || "";
+};
+
 export const CategoriesSection: React.FC<CategoriesSectionProps> = ({ initialCategories }) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [activeVideoId, setActiveVideoId] = useState("");
@@ -47,24 +61,33 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({ initialCat
 
         {/* 6 Category Grid */}
         <div className={styles.grid}>
-          {displayCategories.map((category, index) => (
-            <motion.div
-              key={category.id}
-              className={styles.categoryCard}
-              style={{ background: category.bgGradient }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              whileHover={{ scale: 1.03 }}
-            >
-              <div className={styles.cardOverlay} />
-              <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>{category.title}</h3>
-                <p className={styles.cardLabel}>{category.label}</p>
-              </div>
-            </motion.div>
-          ))}
+          {displayCategories.map((category, index) => {
+            const imgUrl = getCategoryImage(category.title);
+            return (
+              <motion.div
+                key={category.id}
+                className={styles.categoryCard}
+                style={{ background: category.bgGradient }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                whileHover={{ scale: 1.03 }}
+              >
+                {imgUrl && (
+                  <div
+                    className={styles.cardBg}
+                    style={{ backgroundImage: `url('${imgUrl}')` }}
+                  />
+                )}
+                <div className={styles.cardOverlay} />
+                <div className={styles.cardContent}>
+                  <h3 className={styles.cardTitle}>{category.title}</h3>
+                  <p className={styles.cardLabel}>{category.label}</p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Glimpses of Global Awards */}

@@ -1,0 +1,108 @@
+.countdownSection {
+  padding: 5rem 0;
+  background-color: var(--color-surface);
+  border-top: 4px solid var(--foreground);
+  border-bottom: 4px solid var(--foreground);
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Background grid pattern */
+.countdownSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: 40px 40px;
+  background-image: radial-gradient(circle, var(--foreground) 1px, transparent 1px);
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.kicker {
+  font-family: var(--font-family-sans);
+  color: var(--color-gold-accent);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  font-size: var(--font-size-sm);
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-family: var(--font-family-display);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  color: var(--foreground);
+  margin-bottom: 2.5rem;
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.timerGrid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.timeBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+
+.number {
+  font-family: var(--font-family-sans);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  line-height: var(--line-height-none);
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--color-muted-slate);
+}
+
+.separator {
+  font-family: var(--font-family-display);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-light);
+  color: rgba(255, 255, 255, 0.15);
+  line-height: var(--line-height-none);
+  display: none;
+}
+
+@media (min-width: 576px) {
+  .timerGrid {
+    gap: 2rem;
+  }
+  .timeBlock {
+    min-width: 100px;
+  }
+  .separator {
+    display: inline;
+  }
+}
+
+@media (max-width: 768px) {
+  .countdownSection {
+    padding: 3rem 0;
+  }
+}

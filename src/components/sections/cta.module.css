@@ -1,6 +1,6 @@
 .cta {
-  padding: 3rem 0;
-  background: linear-gradient(135deg, var(--color-brand-blue) 0%, #063c68 100%);
+  padding: 6rem 0;
+  background: linear-gradient(135deg, var(--color-warm-beige) 0%, var(--color-deep-charcoal) 100%);
   color: #ffffff;
   text-align: center;
   position: relative;
@@ -48,6 +48,6 @@
 
 .nominateBtn:hover {
   background-color: #ffffff !important;
-  color: var(--color-brand-blue) !important;
+  color: var(--color-rich-black) !important;
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
 }
