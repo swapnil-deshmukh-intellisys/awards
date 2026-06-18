@@ -19,12 +19,12 @@ interface DirectorSectionProps {
 }
 
 export const DirectorSection: React.FC<DirectorSectionProps> = ({ initialDirector }) => {
-  const displayName = initialDirector?.name || "Dr. Anju Bajaj";
+  const displayName = initialDirector?.name || "Chetan Ujade";
   const displayRole = initialDirector?.role || "Executive Director";
   const displayKicker = initialDirector?.kicker || "Message from leadership";
   const displayQuote = initialDirector?.quote || "The Global Awards is more than a ceremony; it is a vital platform designed to recognize and elevate business leadership and innovation. Every year, we are astonished by the depth, resilience, and brilliance of the nominations we receive. Our mission is to ensure that these incredible achievements find the global audience and recognition they so richly deserve.";
   const displayParagraph = initialDirector?.paragraph || "As we embark on 2026, we remain steadfast in our commitment to fostering a community of support, collaboration, and celebration. We believe that by honoring these exceptional organizations and individuals, we are not only recognizing their current achievements but also paving the way for future generations of business innovators to build their own legacies.";
-  const displayImage = initialDirector?.image || "/assets/profile_female_2.png";
+  const displayImage = initialDirector?.image || "/assets/images/chetan.jpeg";
 
   return (
     <section id="director" className={styles.director}>
