@@ -5,25 +5,18 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import styles from "./about.module.css";
 
-interface AboutContent {
-  title: string;
-  subtitle: string;
-  paragraphs: string[];
-  image: string;
-}
-
 interface AboutSectionProps {
-  initialAbout?: AboutContent;
+  initialAboutImage?: string;
 }
 
-export const AboutSection: React.FC<AboutSectionProps> = ({ initialAbout }) => {
-  const displayTitle = initialAbout?.title || "About the Awards";
-  const displayKicker = initialAbout?.subtitle || '"Every word you write is a step towards your legacy."';
-  const displayParagraphs = initialAbout?.paragraphs || [
+export const AboutSection: React.FC<AboutSectionProps> = ({ initialAboutImage }) => {
+  const displayTitle = "About the Awards";
+  const displayKicker = '"Every word you write is a step towards your legacy."';
+  const displayParagraphs = [
     "Celebrating corporate excellence, pioneering innovations, and outstanding leadership achievements worldwide. The Global Awards is a prestigious platform dedicated to recognizing achievements of businesses.",
     "Through a rigorous evaluation process judged by a distinguished panel of industry experts, we ensure the most high-impact accomplishments are celebrated."
   ];
-  const displayImage = initialAbout?.image || "/assets/typewriter_legacy.png";
+  const displayImage = initialAboutImage || "/assets/typewriter_legacy.png";
 
   return (
     <section id="about" className={styles.about}>

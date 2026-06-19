@@ -2,7 +2,7 @@
   background-color: var(--color-rich-black);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   color: var(--color-muted-slate);
-  margin-top: 5rem;
+  margin-top: 0;
 }
 
 .footerTop {

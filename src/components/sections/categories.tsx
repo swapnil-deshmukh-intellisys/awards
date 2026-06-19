@@ -13,8 +13,17 @@ interface Category {
   label: string;
 }
 
+interface Glimpse {
+  title: string;
+  tag?: string;
+  mediaType: string;
+  imageUrl?: string;
+  videoUrl?: string;
+  videoFileUrl?: string;
+}
+
 interface CategoriesSectionProps {
-  initialCategories?: Category[];
+  initialGlimpses?: Glimpse[];
 }
 
 const defaultCategories: Category[] = [
@@ -40,10 +49,44 @@ const getCategoryImage = (title: string) => {
   return categoryImageMap[normalizedTitle] || "";
 };
 
-export const CategoriesSection: React.FC<CategoriesSectionProps> = ({ initialCategories }) => {
+const getEmbedUrl = (url: string) => {
+  if (!url) return "";
+  if (url.includes("/embed/")) return url;
+  
+  let videoId = "";
+  try {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    if (match && match[2].length === 11) {
+      videoId = match[2];
+    }
+  } catch (e) {
+    console.error("Failed to parse video URL", e);
+  }
+  return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1` : url;
+};
+
+export const CategoriesSection: React.FC<CategoriesSectionProps> = ({ initialGlimpses }) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [activeVideoId, setActiveVideoId] = useState("");
-  const displayCategories = initialCategories && initialCategories.length > 0 ? initialCategories : defaultCategories;
+  
+  const displayCategories = defaultCategories;
+  const displayGlimpses = initialGlimpses && initialGlimpses.length > 0 ? initialGlimpses : [
+    {
+      title: "2026 Highlights",
+      tag: "Highlights",
+      mediaType: "video",
+      videoUrl: "dQw4w9WgXcQ",
+      imageUrl: "/assets/hero_banner.jpeg"
+    },
+    {
+      title: "The Future of Innovation",
+      tag: "Panel",
+      mediaType: "video",
+      videoUrl: "dQw4w9WgXcQ",
+      imageUrl: "/assets/business_award_trophy.png"
+    }
+  ];
 
   const playVideo = (videoId: string) => {
     setActiveVideoId(videoId);
@@ -100,29 +143,34 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({ initialCat
           </div>
 
           <div className={styles.glimpsesVideos}>
-            <div className={styles.videoCard} onClick={() => playVideo("dQw4w9WgXcQ")}>
-              <div className={styles.videoCardOverlay} />
-              <div className={styles.videoCardBg} style={{ backgroundImage: "url('/assets/hero_banner.jpeg')" }} />
-              <div className={styles.videoCardInfo}>
-                <span className={styles.videoTag}>Highlights</span>
-                <p className={styles.videoCardTitle}>2026 Highlights</p>
-              </div>
-              <div className={styles.videoPlayBtn}>
-                <Play fill="#ffffff" stroke="#ffffff" size={16} />
-              </div>
-            </div>
-
-            <div className={styles.videoCard} onClick={() => playVideo("dQw4w9WgXcQ")}>
-              <div className={styles.videoCardOverlay} />
-              <div className={styles.videoCardBg} style={{ backgroundImage: "url('/assets/business_award_trophy.png')" }} />
-              <div className={styles.videoCardInfo}>
-                <span className={styles.videoTag}>Panel</span>
-                <p className={styles.videoCardTitle}>The Future of Innovation</p>
-              </div>
-              <div className={styles.videoPlayBtn}>
-                <Play fill="#ffffff" stroke="#ffffff" size={16} />
-              </div>
-            </div>
+            {displayGlimpses.map((glimpse, index) => {
+              const hasVideo = glimpse.mediaType === "video" && (glimpse.videoUrl || glimpse.videoFileUrl);
+              const cardBg = glimpse.imageUrl || "/assets/hero_banner.jpeg";
+              return (
+                <div
+                  key={index}
+                  className={styles.videoCard}
+                  onClick={() => {
+                    if (hasVideo) {
+                      playVideo(glimpse.videoFileUrl || glimpse.videoUrl || "");
+                    }
+                  }}
+                  style={{ cursor: hasVideo ? "pointer" : "default" }}
+                >
+                  <div className={styles.videoCardOverlay} />
+                  <div className={styles.videoCardBg} style={{ backgroundImage: `url('${cardBg}')` }} />
+                  <div className={styles.videoCardInfo}>
+                    {glimpse.tag && <span className={styles.videoTag}>{glimpse.tag}</span>}
+                    <p className={styles.videoCardTitle}>{glimpse.title}</p>
+                  </div>
+                  {hasVideo && (
+                    <div className={styles.videoPlayBtn}>
+                      <Play fill="#ffffff" stroke="#ffffff" size={16} />
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -135,15 +183,38 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({ initialCat
               <X size={28} />
             </button>
             <div className={styles.iframeWrapper}>
-              <iframe
-                width="100%"
-                height="100%"
-                src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1`}
-                title="WAA Video"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              {activeVideoId.includes("http") || activeVideoId.includes(".mp4") || activeVideoId.includes("/files/") ? (
+                activeVideoId.endsWith(".mp4") || activeVideoId.includes("/files/") ? (
+                  <video
+                    src={activeVideoId}
+                    controls
+                    autoPlay
+                    width="100%"
+                    height="100%"
+                    style={{ objectFit: "contain" }}
+                  />
+                ) : (
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={getEmbedUrl(activeVideoId)}
+                    title="Glimpse Video"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                )
+              ) : (
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1`}
+                  title="Glimpse Video"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              )}
             </div>
           </div>
         </div>

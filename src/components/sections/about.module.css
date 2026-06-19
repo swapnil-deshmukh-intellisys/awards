@@ -157,3 +157,10 @@
     left: 16px;
   }
 }
+
+@media (max-width: 480px) {
+  .yellowOffset {
+    top: 8px;
+    left: 8px;
+  }
+}

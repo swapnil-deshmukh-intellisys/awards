@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../ui/button";
-import { Menu, X, Trophy } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import styles from "./navigation.module.css";
 
 const navLinks = [
@@ -33,10 +34,14 @@ export const Navigation: React.FC = () => {
       <div className={`container ${styles.navContainer}`}>
         {/* Logo */}
         <Link href="/" className={styles.logo}>
-          <Trophy className={styles.logoIcon} size={28} />
-          <span className={styles.logoText}>
-            GLOBAL <span className={styles.accentText}>AWARDS</span>
-          </span>
+          <Image
+            src="/assets/logos/logo.png"
+            alt="Global Awards Logo"
+            width={130}
+            height={55}
+            style={{ objectFit: "contain", maxHeight: "50px" }}
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}

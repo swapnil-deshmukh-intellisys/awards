@@ -2,8 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, Phone, MapPin } from "lucide-react";
-import { Facebook, Twitter, Instagram, Linkedin } from "../ui/icons";
+import { Facebook, Instagram } from "../ui/icons";
 import styles from "./footer.module.css";
 import { Button } from "../ui/button";
 
@@ -15,7 +16,13 @@ export const Footer: React.FC = () => {
           {/* Brand Column */}
           <div className={styles.brandCol}>
             <Link href="/" className={styles.logo}>
-              GLOBAL <span className={styles.accentText}>AWARDS</span>
+              <Image
+                src="/assets/logos/logo.png"
+                alt="Global Awards Logo"
+                width={150}
+                height={65}
+                style={{ objectFit: "contain", maxHeight: "60px" }}
+              />
             </Link>
             <p className={styles.description}>
               Honoring outstanding business achievements, innovation, and leadership worldwide.
@@ -26,14 +33,14 @@ export const Footer: React.FC = () => {
               <a href="#" className={styles.socialIcon} aria-label="Facebook">
                 <Facebook size={20} />
               </a>
-              <a href="#" className={styles.socialIcon} aria-label="Twitter">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className={styles.socialIcon} aria-label="Instagram">
+              <a
+                href="https://www.instagram.com/global_awards_?igsh=MXNnNWN6NnBtOGN3Yg=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialIcon}
+                aria-label="Instagram"
+              >
                 <Instagram size={20} />
-              </a>
-              <a href="#" className={styles.socialIcon} aria-label="LinkedIn">
-                <Linkedin size={20} />
               </a>
             </div>
           </div>
@@ -65,7 +72,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Mail size={18} className={styles.contactIcon} />
-                <span>nominations@globalawards.com</span>
+                <span>chetan@globalawards.co.in</span>
               </li>
             </ul>
           </div>

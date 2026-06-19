@@ -7,15 +7,41 @@ import { Play, X } from "lucide-react";
 import { Button } from "../ui/button";
 import styles from "./media.module.css";
 
-const galleryImages = [
-  "/assets/hero_banner.jpeg",
-  "/assets/typewriter_legacy.png",
-  "/assets/hero_banner.jpeg", // Reusing banner image to construct a multi-card grid
-];
+interface GalleryImage {
+  title?: string;
+  imageUrl: string;
+}
 
-export const MediaSection: React.FC = () => {
+interface MediaSectionProps {
+  initialGallery?: GalleryImage[];
+}
+
+const getEmbedUrl = (url: string) => {
+  if (!url) return "";
+  if (url.includes("/embed/")) return url;
+  
+  let videoId = "";
+  try {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    if (match && match[2].length === 11) {
+      videoId = match[2];
+    }
+  } catch (e) {
+    console.error("Failed to parse video URL", e);
+  }
+  return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1` : url;
+};
+
+export const MediaSection: React.FC<MediaSectionProps> = ({ initialGallery }) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [activeVideoId, setActiveVideoId] = useState("");
+
+  const displayGallery = initialGallery && initialGallery.length > 0 ? initialGallery : [
+    { imageUrl: "/assets/hero_banner.jpeg", title: "Award Night Event 1" },
+    { imageUrl: "/assets/typewriter_legacy.png", title: "Award Night Event 2" },
+    { imageUrl: "/assets/hero_banner.jpeg", title: "Award Night Event 3" },
+  ];
 
   const playVideo = (videoId: string) => {
     setActiveVideoId(videoId);
@@ -32,7 +58,7 @@ export const MediaSection: React.FC = () => {
 
         {/* Gallery Grid */}
         <div className={styles.galleryGrid}>
-          {galleryImages.map((img, index) => (
+          {displayGallery.map((item, index) => (
             <motion.div
               key={index}
               className={styles.galleryCard}
@@ -42,8 +68,8 @@ export const MediaSection: React.FC = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Image
-                src={img}
-                alt={`Award Night Event ${index + 1}`}
+                src={item.imageUrl}
+                alt={item.title || `Award Night Event ${index + 1}`}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className={index === 1 ? styles.flippedImage : styles.galleryImage}

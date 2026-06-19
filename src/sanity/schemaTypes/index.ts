@@ -1,15 +1,19 @@
 import { winner } from "./winner";
-import { category } from "./category";
 import { juryMember } from "./juryMember";
 import { testimonial } from "./testimonial";
-import { about } from "./about";
-import { director } from "./director";
+import { aboutImage } from "./aboutImage";
+import { nightOfGlitz } from "./nightOfGlitz";
+import { glimpses } from "./glimpses";
+import { awardNightGallery } from "./awardNightGallery";
+import { guestOfHonour } from "./guestOfHonour";
 
 export const schemaTypes = [
   winner,
-  category,
   juryMember,
   testimonial,
-  about,
-  director,
+  aboutImage,
+  nightOfGlitz,
+  glimpses,
+  awardNightGallery,
+  guestOfHonour,
 ];

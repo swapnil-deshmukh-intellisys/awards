@@ -5,8 +5,38 @@ import { Play, X } from "lucide-react";
 import Image from "next/image";
 import styles from "./award-night.module.css";
 
-export const AwardNightSection: React.FC = () => {
+interface NightOfGlitzData {
+  videoUrl?: string;
+  videoFileUrl?: string;
+  thumbnailUrl?: string;
+}
+
+interface AwardNightSectionProps {
+  initialData?: NightOfGlitzData;
+}
+
+const getEmbedUrl = (url: string) => {
+  if (!url) return "";
+  if (url.includes("/embed/")) return url;
+  
+  let videoId = "";
+  try {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    if (match && match[2].length === 11) {
+      videoId = match[2];
+    }
+  } catch (e) {
+    console.error("Failed to parse video URL", e);
+  }
+  return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1` : url;
+};
+
+export const AwardNightSection: React.FC<AwardNightSectionProps> = ({ initialData }) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+  const displayThumbnail = initialData?.thumbnailUrl || "/assets/business_award_trophy.png";
+  const hasVideo = initialData?.videoFileUrl || initialData?.videoUrl;
 
   return (
     <section id="award-night" className={styles.awardNight}>
@@ -18,7 +48,7 @@ export const AwardNightSection: React.FC = () => {
           <div className={styles.videoCard}>
             <div className={styles.imageWrapper}>
               <Image
-                src="/assets/business_award_trophy.png"
+                src={displayThumbnail}
                 alt="Award Ceremony Trophy"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -28,8 +58,13 @@ export const AwardNightSection: React.FC = () => {
               <div className={styles.playOverlay}>
                 <button
                   className={styles.playButton}
-                  onClick={() => setIsVideoOpen(true)}
+                  onClick={() => {
+                    if (hasVideo) {
+                      setIsVideoOpen(true);
+                    }
+                  }}
                   aria-label="Play Award Video"
+                  style={{ cursor: hasVideo ? "pointer" : "default" }}
                 >
                   <Play fill="#1A1A1A" stroke="#1A1A1A" size={28} className={styles.playIcon} />
                 </button>
@@ -69,15 +104,26 @@ export const AwardNightSection: React.FC = () => {
               <X size={28} />
             </button>
             <div className={styles.iframeWrapper}>
-              <iframe
-                width="100%"
-                height="100%"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-                title="Global Awards Ceremony Video"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              {initialData?.videoFileUrl ? (
+                <video
+                  src={initialData.videoFileUrl}
+                  controls
+                  autoPlay
+                  width="100%"
+                  height="100%"
+                  style={{ objectFit: "contain" }}
+                />
+              ) : (
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={getEmbedUrl(initialData?.videoUrl || "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1")}
+                  title="Global Awards Ceremony Video"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              )}
             </div>
           </div>
         </div>
