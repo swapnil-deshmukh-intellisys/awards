@@ -30,7 +30,13 @@ export const Footer: React.FC = () => {
               economy and inspire future growth.
             </p>
             <div className={styles.socialLinks}>
-              <a href="#" className={styles.socialIcon} aria-label="Facebook">
+              <a
+                href="https://www.facebook.com/share/18r9wAS9gm/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialIcon}
+                aria-label="Facebook"
+              >
                 <Facebook size={20} />
               </a>
               <a
